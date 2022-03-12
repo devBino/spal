@@ -8,6 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.br.ntconsult.spal.repository.HomePath;
 
+/**
+ * {@code FileUploadService} faz o upload de um MultipartFile
+ * para o diretório padrão em home path.
+ * @author Fernando Bino Machado
+ */
 @Service
 public class FileUploadService {
 

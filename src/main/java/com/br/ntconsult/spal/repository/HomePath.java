@@ -2,20 +2,26 @@ package com.br.ntconsult.spal.repository;
 
 import java.util.Date;
 
+/**
+ * {@code HomePath} De acordo com o sistema operacional,
+ * identifica o homePath, e monta o caminho do diretório 
+ * padrão para armazenar os arquivos
+ * @author Fernando Bino Machado
+ */
 public enum HomePath {
 
 	LINUX("Linux"){
 		@Override
 		public String getHomePathAndDataDir() {
 			
-			StringBuilder homePath = new StringBuilder();
+			StringBuilder homePathDir = new StringBuilder();
 			
-			homePath.append( System.getProperty("user.home") );
-			homePath.append( "/data/in/" );
-			homePath.append(new Date().getTime());
-			homePath.append("_");
+			homePathDir.append( System.getProperty("user.home") );
+			homePathDir.append( "/data/in/" );
+			homePathDir.append(new Date().getTime());
+			homePathDir.append("_");
 			
-			return homePath.toString();
+			return homePathDir.toString();
 		}
 	},
 	
@@ -23,14 +29,14 @@ public enum HomePath {
 		@Override
 		public String getHomePathAndDataDir() {
 			
-			StringBuilder homePath = new StringBuilder();
+			StringBuilder homePathDir = new StringBuilder();
 			
-			homePath.append( System.getProperty("user.home") );
-			homePath.append("\\data\\in\\");
-			homePath.append(new Date().getTime());
-			homePath.append("_");
+			homePathDir.append( System.getProperty("user.home") );
+			homePathDir.append("\\data\\in\\");
+			homePathDir.append(new Date().getTime());
+			homePathDir.append("_");
 			
-			return homePath.toString();
+			return homePathDir.toString();
 		}
 	};
 	
