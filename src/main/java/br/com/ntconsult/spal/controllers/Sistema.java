@@ -1,4 +1,4 @@
-package com.br.ntconsult.spal.controllers;
+package br.com.ntconsult.spal.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,8 +1,6 @@
-package com.br.ntconsult.spal.business;
+package br.com.ntconsult.spal.business;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,17 +13,17 @@ import org.springframework.stereotype.Service;
 @Service
 public abstract class GenericBusiness {
 
-	private Set<String> mensagens;
+	private ArrayList<String> mensagens;
 	
 	public GenericBusiness() {
-		mensagens = new HashSet<String>();
+		mensagens = new ArrayList<String>();
 	}
 	
 	public void addMensagem(String mensagem) {
-		mensagens.add(mensagem);
+		this.mensagens.add(mensagem);
 	}
 	
-	public Set<String> getMensagens(){
+	public ArrayList<String> getMensagens(){
 		return mensagens;
 	}
 	

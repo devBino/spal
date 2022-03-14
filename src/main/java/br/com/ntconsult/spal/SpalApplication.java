@@ -1,4 +1,4 @@
-package com.br.ntconsult.spal;
+package br.com.ntconsult.spal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
