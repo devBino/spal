@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ntconsult.nomearquivo.builder.NomeArquivo;
-import br.com.ntconsult.nomearquivo.builder.NomeArquivoBuilder;
+import br.com.ntconsult.arquivo.builder.NomeArquivo;
+import br.com.ntconsult.arquivo.builder.NomeArquivoBuilder;
 
 
 

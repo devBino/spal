@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ntconsult.nomearquivo.builder.NomeArquivo;
-import br.com.ntconsult.nomearquivo.builder.NomeArquivoBuilder;
+import br.com.ntconsult.arquivo.builder.NomeArquivo;
+import br.com.ntconsult.arquivo.builder.NomeArquivoBuilder;
 
 public class LoteModel {
 

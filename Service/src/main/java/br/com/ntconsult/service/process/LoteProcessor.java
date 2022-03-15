@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import br.com.ntconsult.service.constants.Processos;
 import br.com.ntconsult.service.model.LoteModel;
+import br.com.ntconsult.service.model.RelatorioModel;
 import br.com.ntconsult.service.repository.LoteRepository;
 import br.com.ntconsult.service.singleton.ListaLoteModel;
+import br.com.ntconsult.service.singleton.RelatorioLotes;
 
 public class LoteProcessor implements Runnable {
 
@@ -46,6 +48,9 @@ public class LoteProcessor implements Runnable {
 			arquivoLoteProcessor.getProcesso().join();
 			resume();
 			
+			gerarRelatorio();
+			stop();
+			
 		}catch(Exception error) {
 			error.printStackTrace();
 		}
@@ -71,12 +76,33 @@ public class LoteProcessor implements Runnable {
 		
 	}
 	
+	public synchronized void gerarRelatorio() {
+		
+		RelatorioLotes relatorioLotes = RelatorioLotes.getInstance();
+		
+		if( relatorioLotes.getQuantidadeClientes() > 0
+				&& relatorioLotes.getQuantidadeVendedores() > 0 ) {
+		
+			new RelatorioModel()
+				.setConteudo(relatorioLotes.toString())
+				.salvar();
+			
+		}
+		
+		relatorioLotes.resetParciais();
+		
+	}
+	
 	public synchronized void resume() {
 		
 		ListaLoteModel listaLoteModel = ListaLoteModel.getInstance();
 		
 		if( listaLoteModel.getNomes().isEmpty() ) {
+			
+			System.out.println( RelatorioLotes.getInstance().toString() );
+			
 			stop();
+			
 		}
 		
 	}

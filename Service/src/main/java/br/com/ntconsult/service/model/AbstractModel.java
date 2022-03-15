@@ -1,7 +1,7 @@
 package br.com.ntconsult.service.model;
 
-import br.com.ntconsult.nomearquivo.repository.HomePath;
-import br.com.ntconsult.service.odata.ArquivoData;
+import br.com.ntconsult.arquivo.repository.HomePath;
+import br.com.ntconsult.arquivo.odata.ArquivoData;
 
 public class AbstractModel {
 	
@@ -43,10 +43,21 @@ public class AbstractModel {
 		this.recursoDataDir = recursoDataDir;
 	}
 
+	public AbstractModel remover() {
+		
+		ArquivoData arquivoData = new ArquivoData(homePath.getHomePathAndDataDir(
+				recursoDataDir).concat(this.nomeArquivo));
+		
+		arquivoData.deletarArquivo();
+		
+		return this;
+		
+	}
+	
 	public AbstractModel salvar() {
 
 		ArquivoData arquivoData = new ArquivoData(homePath.getHomePathAndDataDir(
-				recursoDataDir).concat("/").concat(this.nomeArquivo));
+				recursoDataDir).concat(this.nomeArquivo));
 		
 		arquivoData.escrever(this.toString());
 		

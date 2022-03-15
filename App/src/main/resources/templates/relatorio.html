@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+   <head th:replace="fragments/head :: head"></head>
+
+   <body id="page-top">
+
+      <!-- Page Wrapper -->
+      <div id="wrapper">
+
+         <div th:replace="fragments/sidebar :: sidebar"></div>
+
+         <!-- Content Wrapper -->
+         <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+               <nav th:replace="fragments/topnav :: nav"></nav>
+               
+               <!-- End of Topbar -->
+
+               <!-- Begin Page Content -->
+               <div class="container-fluid">
+
+                  <!-- Page Heading -->
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                     <h1 class="h3 mb-0 text-gray-800">Relatórios</h1>
+                  </div>
+
+                  <!-- Content Row -->
+                  <div class="row">
+                     <div class="col-sm-12">
+                     </div>
+                  </div>
+
+                  <div class="card shadow mb-4 mt-3">
+                  
+                     <div class="card-header py-3">
+                        <div class="row">
+                           <div class="col-sm-11">
+                                 <h6 class="m-0 font-weight-bold text-primary">Dados Parciais</h6>
+                           </div>
+                           <div class="col-sm-1">
+               
+                           </div>
+                        </div>
+                     </div>        
+                                 
+                     <div class="card-body" id="dvTabela">
+                        <div class="table-responsive">
+                           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                 <thead>
+                                    <tr>
+                                       <th>AVALIAÇÃO</th>
+                                       <th>RESULTADO</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 
+                                    <tr th:each="relatorios : ${relatorios}" >
+                                          <td><span th:text="${relatorios[0]}"></span></td>
+                                          <td><span th:text="${relatorios[1]}"></span></td>
+                                    </tr>
+                                    
+                                 </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End of Main Content -->
+
+			   <footer th:replace="fragments/footer :: footer"></footer>
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+         </div>
+         <!-- End of Page Wrapper -->
+
+         <div th:replace="fragments/jsbody :: jsbody"></div>
+
+   </body>
+   
+</html>
+

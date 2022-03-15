@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 public class VerificaLote {
 
-	@Scheduled( fixedDelay = 500000 )
+	@Scheduled( fixedDelay = 10000 )
 	public static void processarLotes() {
 		
 		LoteProcessor processo = new LoteProcessor();

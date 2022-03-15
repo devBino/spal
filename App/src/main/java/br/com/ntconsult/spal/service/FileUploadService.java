@@ -6,8 +6,8 @@ import java.nio.file.Paths;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.ntconsult.nomearquivo.builder.NomeArquivo;
-import br.com.ntconsult.nomearquivo.builder.NomeArquivoBuilder;
+import br.com.ntconsult.arquivo.builder.NomeArquivo;
+import br.com.ntconsult.arquivo.builder.NomeArquivoBuilder;
 
 /**
  * {@code FileUploadService} faz o upload de um MultipartFile

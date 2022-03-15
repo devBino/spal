@@ -1,6 +1,6 @@
 package br.com.ntconsult.service.model;
 
-import br.com.ntconsult.nomearquivo.builder.NomeArquivo;
+import br.com.ntconsult.arquivo.builder.NomeArquivo;
 
 public class ArquivoModel {
 

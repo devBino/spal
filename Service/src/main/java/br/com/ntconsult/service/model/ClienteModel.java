@@ -1,6 +1,6 @@
 package br.com.ntconsult.service.model;
 
-import br.com.ntconsult.nomearquivo.constants.RecursoDataDir;
+import br.com.ntconsult.arquivo.constants.RecursoDataDir;
 import br.com.ntconsult.service.constants.NomesArquivos;
 
 public class ClienteModel extends AbstractModel {

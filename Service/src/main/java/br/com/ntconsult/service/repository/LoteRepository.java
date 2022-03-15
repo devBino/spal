@@ -2,7 +2,7 @@ package br.com.ntconsult.service.repository;
 
 import java.io.File;
 
-import br.com.ntconsult.nomearquivo.builder.NomeArquivo;
+import br.com.ntconsult.arquivo.builder.NomeArquivo;
 
 import br.com.ntconsult.service.model.LoteModel;
 import br.com.ntconsult.service.singleton.ListaLoteModel;
@@ -17,10 +17,11 @@ public class LoteRepository {
 		for(File a : arquivos) {
 			
 			LoteModel loteModel = new LoteModel(a);
+			HistoricoLoteRepository historico = new HistoricoLoteRepository(loteModel);
 			
-			if( !listaLoteModel.getNomes().contains(loteModel.getDescricaoLote()) ) {
-			
-				HistoricoLoteRepository historico = new HistoricoLoteRepository(loteModel);
+			if( !listaLoteModel.getNomes().contains(loteModel.getDescricaoLote())
+				&& !historico.exists(loteModel.getDescricaoLote())	) {
+				
 				historico.criarHistoricoLote();
 				
 				loteModel.setArquivos(arquivos);

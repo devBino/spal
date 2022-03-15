@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.ntconsult.nomearquivo.builder.NomeArquivo;
+import br.com.ntconsult.arquivo.builder.NomeArquivo;
 
 import br.com.ntconsult.spal.request.ArquivoRequest;
 import br.com.ntconsult.spal.service.FileUploadService;
@@ -37,12 +37,10 @@ public class LoteRepository {
 		
 	}
 	
-	public void salvarLote(MultipartFile[] listFiles, String descricaoLote) 
+	public void salvarLote(MultipartFile file, String descricaoLote) 
 		throws IllegalStateException, IOException {
 		
-		for(MultipartFile file : listFiles) {
-			fileUploadService.uploadFile( file, descricaoLote );	
-		}
+		fileUploadService.uploadFile( file, descricaoLote );
 		
 	}
 	

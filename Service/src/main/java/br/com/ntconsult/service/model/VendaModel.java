@@ -2,7 +2,7 @@ package br.com.ntconsult.service.model;
 
 import java.util.List;
 
-import br.com.ntconsult.nomearquivo.constants.RecursoDataDir;
+import br.com.ntconsult.arquivo.constants.RecursoDataDir;
 import br.com.ntconsult.service.constants.NomesArquivos;
 
 import java.math.BigDecimal;
@@ -37,6 +37,10 @@ public class VendaModel extends AbstractModel {
 	public VendaModel setNomeVendedor(String nome) {
 		this.nomeVendedor = nome;
 		return this;
+	}
+	
+	public BigDecimal getValorTotalVenda() {
+		return valorTotalVenda;
 	}
 	
 	public VendaModel addItem(String dadosItem) {

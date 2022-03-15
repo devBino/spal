@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import br.com.ntconsult.nomearquivo.constants.RecursoDataDir;
-import br.com.ntconsult.nomearquivo.repository.HomePath;
+import br.com.ntconsult.arquivo.constants.RecursoDataDir;
+import br.com.ntconsult.arquivo.repository.HomePath;
 import br.com.ntconsult.service.constants.NomesArquivos;
 import br.com.ntconsult.service.constants.StatusProcesso;
 

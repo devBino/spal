@@ -2,7 +2,7 @@ package br.com.ntconsult.service.model;
 
 import java.math.BigDecimal;
 
-import br.com.ntconsult.nomearquivo.constants.RecursoDataDir;
+import br.com.ntconsult.arquivo.constants.RecursoDataDir;
 import br.com.ntconsult.service.constants.NomesArquivos;
 
 public class VendedorModel extends AbstractModel {

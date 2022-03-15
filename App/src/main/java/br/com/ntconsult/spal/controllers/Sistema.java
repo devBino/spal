@@ -1,18 +1,17 @@
 package br.com.ntconsult.spal.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Sistema {
 
-	@RequestMapping( path = "/", method = RequestMethod.GET )
+	@GetMapping( path = "/" )
 	public String index() {
 		return "sistema";
 	}
 	
-	@RequestMapping( path = "/sistema", method = RequestMethod.GET )
+	@GetMapping( path = "/sistema" )
 	public String sistema() {
 		return "sistema";
 	}

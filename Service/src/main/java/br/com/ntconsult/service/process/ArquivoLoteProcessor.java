@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.ntconsult.service.annotations.LayoutMethod;
 import br.com.ntconsult.service.constants.DelimitadoresTexto;
 import br.com.ntconsult.service.constants.Processos;
-import br.com.ntconsult.service.odata.ArquivoData;
 import br.com.ntconsult.service.singleton.ListaLoteModel;
+
+import br.com.ntconsult.arquivo.odata.ArquivoData;
 
 public class ArquivoLoteProcessor implements Runnable {
 

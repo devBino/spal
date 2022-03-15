@@ -1,23 +1,21 @@
 package br.com.ntconsult.service.singleton;
 
-
 public class RelatorioLotes {
 
 	private int quantidadeClientes;
 	private int quantidadeVendedores;
 	private int idVendaMaisCara;
-	private int idPiorVendedor;
+	private double maiorValorVenda; 
+	private String piorVendedor;
+	private double menorValorVenda;
 	
-	private RelatorioLotes relatorio;
+	private static RelatorioLotes relatorio;
 	
 	private RelatorioLotes() {
-		quantidadeClientes = 0;
-		quantidadeVendedores = 0;
-		idVendaMaisCara = 0;
-		idPiorVendedor = 0;
+		menorValorVenda = 9999999999999.99;
 	}
 	
-	public RelatorioLotes getInstance() {
+	public static RelatorioLotes getInstance() {
 		
 		if( relatorio == null ) {
 			relatorio = new RelatorioLotes();
@@ -51,14 +49,59 @@ public class RelatorioLotes {
 		this.idVendaMaisCara = idVendaMaisCara;
 	}
 
-	public int getIdPiorVendedor() {
-		return idPiorVendedor;
+	public double getMaiorValorVenda() {
+		return maiorValorVenda;
 	}
 
-	public void setIdPiorVendedor(int idPiorVendedor) {
-		this.idPiorVendedor = idPiorVendedor;
+	public void setMaiorValorVenda(double maiorValorVenda) {
+		this.maiorValorVenda = maiorValorVenda;
+	}
+
+	public double getMenorValorVenda() {
+		return menorValorVenda;
+	}
+
+	public void setMenorValorVenda(double menorValorVenda) {
+		this.menorValorVenda = menorValorVenda;
+	}
+
+	public String getPiorVendedor() {
+		return piorVendedor;
+	}
+
+	public void setPiorVendedor(String piorVendedor) {
+		this.piorVendedor = piorVendedor;
+	}
+
+	public void resetParciais() {
+		quantidadeClientes = 0;
+		quantidadeVendedores = 0;
+		idVendaMaisCara = 0;
+		maiorValorVenda = 0.00;
+		menorValorVenda = 9999999999999.99;
+		piorVendedor = "";
 	}
 	
+	@Override
+	public String toString() {
+
+		StringBuilder relatorio = new StringBuilder()
+			.append("Clientes nos Lotes Processados: ")
+			.append(String.valueOf(this.quantidadeClientes))
+			.append("\n")
+			.append("Vendedores nos Lotes Processados: ")
+			.append(String.valueOf(this.quantidadeVendedores))
+			.append("\n")
+			.append("ID da Venda mais cara: ")
+			.append(String.valueOf(this.idVendaMaisCara))
+			.append("\n")
+			.append("Vendedor com menor valor em vendas: ")
+			.append(this.piorVendedor)
+			.append("\n");
+		
+		return relatorio.toString();
+		
+	}
 	
 	
 }

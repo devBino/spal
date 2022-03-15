@@ -44,11 +44,11 @@ public class Lote {
 	
 	@PostMapping( path = "/salvar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE )
 	public String salvarLote(Model model, @RequestParam("descricao") String descricaoLote, 
-		@RequestParam("files") MultipartFile[] listFiles ) 
+		@RequestParam("file") MultipartFile file ) 
 			throws IllegalStateException, IOException {
 		
 		business.resetarMensagens();
-		business.validaLoteBusiness(listFiles);
+		business.validaLoteBusiness(file);
 		business.validaDescricaoLote(descricaoLote);
 		
 		if( business.existemErros() ) {
@@ -58,7 +58,7 @@ public class Lote {
 			return "lote";
 		}
 		
-		loteRepository.salvarLote(listFiles, descricaoLote);
+		loteRepository.salvarLote(file, descricaoLote);
 		
 		model.addAttribute("sucesso", "true");
 		

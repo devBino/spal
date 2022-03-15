@@ -16,19 +16,15 @@ public class LoteBusiness extends GenericBusiness {
 		super();
 	}
 	
-	public void validaLoteBusiness(MultipartFile[] listFiles) {
-
-		for(MultipartFile file : listFiles) {
+	public void validaLoteBusiness(MultipartFile file) {
+		
+		if( !extensaoValida(file.getOriginalFilename()) ) {
 			
-			if( !extensaoValida(file.getOriginalFilename()) ) {
-				
-				addMensagem(new StringBuilder()
-					.append("Arquivo \"")
-					.append(file.getOriginalFilename())
-					.append("\" deve possuir extensão \".dat\"")
-					.toString());
-				
-			}
+			addMensagem(new StringBuilder()
+				.append("Arquivo \"")
+				.append(file.getOriginalFilename())
+				.append("\" deve possuir extensão \".dat\"")
+				.toString());
 			
 		}
 		

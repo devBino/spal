@@ -1,0 +1,10 @@
+package br.com.ntconsult.arquivo.constants;
+
+public class RecursoDataDir {
+
+	public final static String IN = "in";	
+	public final static String OUT = "out";
+	public final static String HISTORICO_LOTE = "historico_lote";
+	public final static String DADOS_SEPARADOS = "dados_separados";
+	
+}
