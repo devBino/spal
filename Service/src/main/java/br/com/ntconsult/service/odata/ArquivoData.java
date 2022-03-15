@@ -6,6 +6,10 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
 
+import java.util.ArrayList;
+
+import br.com.ntconsult.service.constants.DelimitadoresTexto;
+
 /**
  * {@code Arquivo} fornece métodos
  * para leitura e escrita em arquivos.
@@ -113,6 +117,32 @@ public class ArquivoData {
 	 */
 	public StringBuilder getContents() {
 		return contents;
+	}
+	
+	/**
+	 * Converte o conteudo do arquivo em ume lista de Strings
+	 * onde
+	 * @return registros contem a lista
+	 */
+	public ArrayList<String[]> toListString() {
+		
+		ler();
+		
+		String[] linhas = contents.toString().split(DelimitadoresTexto.QUEBRA_LINHA);
+
+		ArrayList<String[]> registros = new ArrayList<String[]>(); 
+		
+		if( linhas.length == 1 && linhas[0].isEmpty() ) {
+			return registros; 
+		}
+		
+		for( int i=0; i<linhas.length; i++ ) {
+			String[] arrLinha = linhas[i].split(DelimitadoresTexto.CEDILHA);
+			registros.add(arrLinha);
+		}
+		
+		return registros;
+		
 	}
 	
 	

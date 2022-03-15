@@ -8,21 +8,19 @@ import br.com.ntconsult.nomearquivo.constants.RecursoDataDir;
 import br.com.ntconsult.nomearquivo.repository.HomePath;
 import br.com.ntconsult.service.constants.NomesArquivos;
 import br.com.ntconsult.service.constants.StatusProcesso;
-import br.com.ntconsult.service.odata.ArquivoData;
 
-public class HistoricoModel {
+public class HistoricoModel extends AbstractModel {
 
-	private String nomeArquivo;
 	private String lote;
 	private Calendar dataInicio;
 	private Calendar dataFim;
 	private String status;
 	private String motivoStatus;
-	private HomePath homePath;
 	
 	public HistoricoModel(String lote) {
 		
-		this.nomeArquivo = NomesArquivos.ARQUIVO_HISTORICO_LOTE;
+		super(NomesArquivos.HISTORICO_LOTE);
+		setRecursoDataDir(RecursoDataDir.HISTORICO_LOTE);
 		
 		this.lote = lote;
 		this.dataInicio = new GregorianCalendar();
@@ -110,15 +108,10 @@ public class HistoricoModel {
 		
 	}
 	
+	@Override
 	public HistoricoModel salvar() {
-
-		ArquivoData arquivoData = new ArquivoData(homePath.getHomePathAndDataDir(
-				RecursoDataDir.HISTORICO_LOTE).concat("/").concat(this.nomeArquivo));
-		
-		arquivoData.escrever(this.toString());
-		
+		super.salvar();
 		return this;
-		
 	}
 	
 	

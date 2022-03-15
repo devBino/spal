@@ -22,7 +22,7 @@ public class HistoricoLoteRepository {
 	public void criarHistoricoLote() {
 
 		HistoricoModel historicoModel = new HistoricoModel(
-				loteModel.getDescricaoLote() ).salvar();
+				loteModel.getDescricaoLote()).salvar();
 		
 	}
 	

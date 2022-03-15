@@ -6,7 +6,6 @@ import java.util.List;
 
 import br.com.ntconsult.nomearquivo.builder.NomeArquivo;
 import br.com.ntconsult.nomearquivo.builder.NomeArquivoBuilder;
-import br.com.ntconsult.service.singleton.ListaLoteModel;
 
 public class LoteModel {
 
@@ -51,6 +50,10 @@ public class LoteModel {
 			
 		}
 		
+	}
+	
+	public List<ArquivoModel> getListaArquivos(){
+		return arquivos;
 	}
 	
 	

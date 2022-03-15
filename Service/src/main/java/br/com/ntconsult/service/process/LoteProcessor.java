@@ -33,10 +33,8 @@ public class LoteProcessor implements Runnable {
 			ListaLoteModel listaLoteModel = ListaLoteModel.getInstance();
 			
 			if( !listaLoteModel.getNomes().isEmpty() ) {
-				
 				stop();
 				return;
-				
 			}
 			
 			verificarRegistrosLotes(listaLoteModel);

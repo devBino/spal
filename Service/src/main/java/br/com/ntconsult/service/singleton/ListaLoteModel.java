@@ -3,6 +3,10 @@ package br.com.ntconsult.service.singleton;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.ApplicationScope;
+
 import br.com.ntconsult.service.model.LoteModel;
 
 public class ListaLoteModel {
