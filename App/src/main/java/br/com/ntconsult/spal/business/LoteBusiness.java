@@ -35,12 +35,12 @@ public class LoteBusiness extends GenericBusiness {
 		if( !descricaoLote.matches("Lote{1}_{1}[0-9]{1,6}") ) {
 			
 			addMensagem(new StringBuilder()
-					.append("Descrição \"")
-					.append(descricaoLote)
-					.append("\" fora do padrão. Por favor, ")
-					.append("siga o formato: Lote{1}_{1}[0-9]{1,6} ")
-					.append("Exemplo: Lote_999999")
-					.toString());
+				.append("Descrição \"")
+				.append(descricaoLote)
+				.append("\" fora do padrão. Por favor, ")
+				.append("siga o formato: Lote{1}_{1}[0-9]{1,6} ")
+				.append("Exemplo: Lote_999999")
+				.toString());
 			
 		}
 		

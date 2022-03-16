@@ -1,5 +1,10 @@
 package br.com.ntconsult.spal.request;
 
+/**
+ * {@code ArquivoRequest} representa os parâmetros de 
+ * uma requisição de ArquivoRequest
+ * @author Fernando Bino Machado
+ */
 public class ArquivoRequest extends GenericRequest {
 
 	private String nomeArquivo;

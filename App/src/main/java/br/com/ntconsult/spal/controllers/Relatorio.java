@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import br.com.ntconsult.spal.repository.RelatorioRepository;
 
+/**
+ * {@code Lote} recebe e processa requisições vindas
+ * da view relatorio
+ * @author Fernando Bino Machado
+ */
 @Controller
 public class Relatorio {
 

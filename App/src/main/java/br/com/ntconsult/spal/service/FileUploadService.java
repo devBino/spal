@@ -27,7 +27,6 @@ public class FileUploadService {
 		
 		file.transferTo( Paths.get( nomeArquivo.toString() ) );
 		
-		
 	}
 	
 }

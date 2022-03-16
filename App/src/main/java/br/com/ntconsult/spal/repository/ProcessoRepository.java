@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 import br.com.ntconsult.arquivo.builder.NomeArquivo;
 import br.com.ntconsult.arquivo.builder.NomeArquivoBuilder;
 
-
-
+/**
+ * {@code ProcessoRepository} fornece métodos
+ * reutilizáveis para tratativas e leitura de processos
+ * @author Fernando Bino Machado
+ */
 @Service
 public class ProcessoRepository {
 
@@ -18,10 +21,9 @@ public class ProcessoRepository {
 	
 	public ArrayList<String> getNomesLotes(){
 		
-		ArrayList<String[]> arquivosLotes = loteRepository.getArquivosLotes();
 		ArrayList<String> nomesLotes = new ArrayList<String>();
 		
-		for(String[] arquivo : arquivosLotes) {
+		for(String[] arquivo : loteRepository.getArquivosLotes()) {
 			
 			NomeArquivo nomeArquivo = new NomeArquivoBuilder()
 					.setCaminhoCompleto(arquivo[1])

@@ -13,6 +13,11 @@ import br.com.ntconsult.arquivo.builder.NomeArquivo;
 import br.com.ntconsult.spal.request.ArquivoRequest;
 import br.com.ntconsult.spal.service.FileUploadService;
 
+/**
+ * {@code LoteRepository} fornece métodos
+ * reutilizáveis para tratativas e leitura de lotes
+ * @author Fernando Bino Machado
+ */
 @Service
 public class LoteRepository {
 	
@@ -21,12 +26,9 @@ public class LoteRepository {
 	
 	public ArrayList<String[]> getArquivosLotes() {
 	
-		File diretorio = new File( new NomeArquivo().getHomePathAndDataDir() );
-		File[] arquivos = diretorio.listFiles();
-		
 		ArrayList<String[]> arquivosLotes = new ArrayList<String[]>();
 		
-		for(File a : arquivos) {
+		for( File a : new File(new NomeArquivo().getHomePathAndDataDir()).listFiles() ) {
 			arquivosLotes.add(new String[] {
 				a.getName(),
 				a.getAbsolutePath()
@@ -45,22 +47,23 @@ public class LoteRepository {
 	}
 	
 	public void deletarArquivoLote(ArquivoRequest arquivo) {
-		
-		File diretorio = new File( new NomeArquivo().getHomePathAndDataDir() );
-		File[] files = diretorio.listFiles();
 
-		for( File a : files ) {
+		for( File a : new File(new NomeArquivo().getHomePathAndDataDir()).listFiles() ) {
+			
 			if( a.getName().equals(arquivo.getNomeArquivo()) ) {
 				arquivo.setSucesso(true);
 				a.delete();
 				break;
 			}
+			
 		}
 		
 		if( !arquivo.isSucesso() ) {
+			
 			arquivo.setMensagem(new StringBuilder()
-					.append("Arquivo não localizado...")
-					.toString());
+				.append("Arquivo não localizado...")
+				.toString());
+			
 		}
 		
 	}

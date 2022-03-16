@@ -8,6 +8,11 @@ import br.com.ntconsult.arquivo.builder.NomeArquivo;
 import br.com.ntconsult.arquivo.constants.RecursoDataDir;
 import br.com.ntconsult.arquivo.odata.ArquivoData;
 
+/**
+ * {@code RelatorioRepository} fornece métodos
+ * reutilizáveis para tratativas e leitura do relatório
+ * @author Fernando Bino Machado
+ */
 @Service
 public class RelatorioRepository {
 
