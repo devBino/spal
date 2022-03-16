@@ -8,6 +8,10 @@ import br.com.ntconsult.service.constants.NomesArquivos;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+/**
+ * Modelo de dados para vendas
+ * @author Fernando Bino Machado
+ */
 public class VendaModel extends AbstractModel {
 
 	private String nomeVendedor;
@@ -82,9 +86,9 @@ public class VendaModel extends AbstractModel {
 		}
 		
 		venda.append("]")
-		.append(";")
-		.append(valorTotalVenda.toString())
-		.append("\n");
+			.append(";")
+			.append(valorTotalVenda.toString())
+			.append("\n");
 		
 		
 		

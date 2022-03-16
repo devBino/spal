@@ -3,10 +3,6 @@ package br.com.ntconsult.service.singleton;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.ApplicationScope;
-
 import br.com.ntconsult.service.model.LoteModel;
 
 public class ListaLoteModel {
@@ -14,7 +10,6 @@ public class ListaLoteModel {
 	private static ListaLoteModel listaLoteModel;
 	private Set<LoteModel> lotes;
 	private Set<String> nomes;
-	private boolean bloqueado;
 	
 	private ListaLoteModel() {
 		lotes = new HashSet<LoteModel>();
@@ -46,15 +41,6 @@ public class ListaLoteModel {
 	public void setNomes(Set<String> nomes) {
 		this.nomes = nomes;
 	}
-
-	public void bloquear() {
-		this.bloqueado = true;
-	}
-	
-	public void liberar() {
-		this.bloqueado = false;
-	}
-	
 	
 	
 }

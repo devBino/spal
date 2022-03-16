@@ -5,9 +5,11 @@ public class RelatorioLotes {
 	private int quantidadeClientes;
 	private int quantidadeVendedores;
 	private int idVendaMaisCara;
+	
 	private double maiorValorVenda; 
-	private String piorVendedor;
 	private double menorValorVenda;
+	
+	private String piorVendedor;
 	
 	private static RelatorioLotes relatorio;
 	

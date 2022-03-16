@@ -9,6 +9,10 @@ import br.com.ntconsult.service.repository.LoteRepository;
 import br.com.ntconsult.service.singleton.ListaLoteModel;
 import br.com.ntconsult.service.singleton.RelatorioLotes;
 
+/**
+ * {@code LoteProcessor} processa um lote de arquivos
+ * @author Fernando Bino Machado
+ */
 public class LoteProcessor implements Runnable {
 
 	private ArrayList<LoteModel> lotes;
@@ -99,7 +103,9 @@ public class LoteProcessor implements Runnable {
 		
 		if( listaLoteModel.getNomes().isEmpty() ) {
 			
+			System.out.println( "\nRESULTADO:\n" );
 			System.out.println( RelatorioLotes.getInstance().toString() );
+			System.out.println("\n------------------------------------------------------\n");
 			
 			stop();
 			

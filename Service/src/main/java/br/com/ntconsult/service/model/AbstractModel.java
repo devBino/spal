@@ -3,6 +3,12 @@ package br.com.ntconsult.service.model;
 import br.com.ntconsult.arquivo.repository.HomePath;
 import br.com.ntconsult.arquivo.odata.ArquivoData;
 
+/**
+ * {@code AbstractModel} fornece padrão
+ * abstrato para Models representando registros
+ * nos arquivos
+ * @author Fernando Bino Machado
+ */
 public class AbstractModel {
 	
 	protected int id;
@@ -43,6 +49,10 @@ public class AbstractModel {
 		this.recursoDataDir = recursoDataDir;
 	}
 
+	/**
+	 * @implNote Remove um arquivo completo
+	 * @return retorna a classe atual
+	 */
 	public AbstractModel remover() {
 		
 		ArquivoData arquivoData = new ArquivoData(homePath.getHomePathAndDataDir(
@@ -54,6 +64,12 @@ public class AbstractModel {
 		
 	}
 	
+	/**
+	 * Salva uma linha no arquivo
+	 * onde a linha representa a classe atual 
+	 * e classes filhas
+	 * @return retorna a classe atual
+	 */
 	public AbstractModel salvar() {
 
 		ArquivoData arquivoData = new ArquivoData(homePath.getHomePathAndDataDir(

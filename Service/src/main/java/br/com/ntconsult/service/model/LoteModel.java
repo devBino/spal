@@ -7,6 +7,10 @@ import java.util.List;
 import br.com.ntconsult.arquivo.builder.NomeArquivo;
 import br.com.ntconsult.arquivo.builder.NomeArquivoBuilder;
 
+/**
+ * Modelo de dados para lotes
+ * @author Fernando Bino Machado
+ */
 public class LoteModel {
 
 	private String descricaoLote;
@@ -19,11 +23,11 @@ public class LoteModel {
 	
 	public LoteModel(File file) {
 		
-		NomeArquivo nomeArquivo = new NomeArquivoBuilder()
+		this.descricaoLote = new NomeArquivoBuilder()
 				.setCaminhoCompleto(file.getAbsolutePath())
-				.builder();
+				.builder()
+				.getDescricaoLote();
 		
-		this.descricaoLote = nomeArquivo.getDescricaoLote();
 		this.arquivos = new ArrayList<ArquivoModel>();
 		
 	}

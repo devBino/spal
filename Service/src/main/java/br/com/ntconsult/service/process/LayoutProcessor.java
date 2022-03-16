@@ -11,6 +11,11 @@ import br.com.ntconsult.service.model.VendaModel;
 import br.com.ntconsult.service.model.VendedorModel;
 import br.com.ntconsult.service.singleton.RelatorioLotes;
 
+/**
+ * {@code LayoutProcessor} processa registro de
+ * um arquivo de acordo com layout
+ * @author Fernando Bino Machado
+ */
 @Service
 public class LayoutProcessor {
 
@@ -23,7 +28,7 @@ public class LayoutProcessor {
 	@LayoutMethod( tipo = "001" )
 	public void processaLayoutVendedor(String dados) {
 		
-		//seta dados na model e salva dados em arquivos separados
+		//seta dados na model e salva em arquivo do vendedor
 		String[] dadosModel = dados.split(DelimitadoresTexto.CEDILHA);
 		
 		new VendedorModel()
@@ -43,7 +48,7 @@ public class LayoutProcessor {
 	@LayoutMethod( tipo = "002" )
 	public void processaLayoutCliente(String dados) {
 		
-		//seta dados na model e salva dados em arquivos separados
+		//seta dados na model e salva em arquivo do cliente
 		String[] dadosModel = dados.split(DelimitadoresTexto.CEDILHA);
 		
 		new ClienteModel()
@@ -63,7 +68,7 @@ public class LayoutProcessor {
 	@LayoutMethod( tipo = "003" )
 	public void processaLayoutVenda(String dados) {
 		
-		//seta dados na model e salva dados em arquivos separados
+		//seta dados na model e salva em arquivo de venda
 		String[] dadosModel = dados.split(DelimitadoresTexto.CEDILHA);
 		
 		VendaModel vendaModel = new VendaModel()

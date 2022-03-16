@@ -1,5 +1,10 @@
 package br.com.ntconsult.service.constants;
 
+/**
+ * {@code NomesArquivos} fornece valores para
+ * os nomes dos arquivos que serão salvos nos diretórios padrão
+ * @author Fernando Bino Machado
+ */
 public class NomesArquivos {
 
 	public static final String HISTORICO_LOTE = "historico_lote.txt";

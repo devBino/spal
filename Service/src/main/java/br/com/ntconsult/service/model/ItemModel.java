@@ -5,6 +5,10 @@ import java.math.BigInteger;
 
 import br.com.ntconsult.service.constants.DelimitadoresTexto;
 
+/**
+ * Modelo de dados para items de vendas
+ * @author Fernando Bino Machado
+ */
 public class ItemModel {
 
 	private int id;

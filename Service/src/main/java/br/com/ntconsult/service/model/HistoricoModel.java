@@ -9,6 +9,10 @@ import br.com.ntconsult.arquivo.repository.HomePath;
 import br.com.ntconsult.service.constants.NomesArquivos;
 import br.com.ntconsult.service.constants.StatusProcesso;
 
+/**
+ * Modelo de dados para historico
+ * @author Fernando Bino Machado
+ */
 public class HistoricoModel extends AbstractModel {
 
 	private String lote;

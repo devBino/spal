@@ -11,8 +11,7 @@ public class LoteRepository {
 	
 	public static void agruparLotes(ListaLoteModel listaLoteModel) {
 	
-		File diretorio = new File( new NomeArquivo().getHomePathAndDataDir() );
-		File[] arquivos = diretorio.listFiles();
+		File[] arquivos = new File(new NomeArquivo().getHomePathAndDataDir()).listFiles();
 		
 		for(File a : arquivos) {
 			
@@ -25,6 +24,7 @@ public class LoteRepository {
 				historico.criarHistoricoLote();
 				
 				loteModel.setArquivos(arquivos);
+				
 				listaLoteModel.getLotes().add(loteModel);
 				listaLoteModel.getNomes().add(loteModel.getDescricaoLote());
 				

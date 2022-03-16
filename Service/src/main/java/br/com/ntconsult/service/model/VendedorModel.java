@@ -5,6 +5,10 @@ import java.math.BigDecimal;
 import br.com.ntconsult.arquivo.constants.RecursoDataDir;
 import br.com.ntconsult.service.constants.NomesArquivos;
 
+/**
+ * Modelo de dados para vendedor
+ * @author Fernando Bino Machado
+ */
 public class VendedorModel extends AbstractModel {
 
 	private String cpf;

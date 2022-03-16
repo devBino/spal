@@ -1,5 +1,11 @@
 package br.com.ntconsult.service.constants;
 
+/**
+ * {@code StatusProcesso} fornece valores
+ * para identificação de status de processamento
+ * dos arquivos
+ * @author Fernando Bino Machado
+ */
 public class StatusProcesso {
 
 	public static final String PROCESSANDO = "Processando";

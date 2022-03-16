@@ -1,7 +1,6 @@
 package br.com.ntconsult.service.process;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +11,10 @@ import br.com.ntconsult.service.singleton.ListaLoteModel;
 
 import br.com.ntconsult.arquivo.odata.ArquivoData;
 
+/**
+ * {@code ArquivoLoteProcessor} processa arquivos em lotes
+ * @author Fernando Bino Machado
+ */
 public class ArquivoLoteProcessor implements Runnable {
 
 	@Autowired
@@ -19,9 +22,7 @@ public class ArquivoLoteProcessor implements Runnable {
 	private Thread processo;
 	
 	public ArquivoLoteProcessor() {
-	
 		processo = new Thread(this, Processos.PROCESSAMENTO_LOTES);
-		
 	}
 	
 	public void iniciar() {
@@ -68,13 +69,9 @@ public class ArquivoLoteProcessor implements Runnable {
 			
 			LayoutProcessor layout = new LayoutProcessor();
 			
-			Method[] methods = layout.getClass().getDeclaredMethods();
+			for(String[] dadosRegistro : file.toListString()) {
 			
-			ArrayList<String[]> registros = file.toListString();
-			
-			for(String[] dadosRegistro : registros) {
-			
-				for(Method m : methods) {
+				for(Method m : layout.getClass().getDeclaredMethods()) {
 					
 					LayoutMethod l = (LayoutMethod) m.getAnnotation(LayoutMethod.class);
 					
