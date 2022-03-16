@@ -8,7 +8,7 @@ import br.com.ntconsult.arquivo.repository.HomePath;
 
 /**
  * {@code NomeArquivo} possui atributos e métodos necessários
- * para criação do nome dos arquivos
+ * para criação dos nomes dos arquivos
  * @author Fernando Bino Machado
  */
 public class NomeArquivo {

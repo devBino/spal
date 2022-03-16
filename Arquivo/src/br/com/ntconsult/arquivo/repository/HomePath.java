@@ -9,6 +9,7 @@ package br.com.ntconsult.arquivo.repository;
 public enum HomePath {
 
 	LINUX("Linux"){
+		
 		@Override
 		public String getHomePathAndDataDir(String recurso) {
 			
@@ -21,9 +22,11 @@ public enum HomePath {
 			
 			return homePathDir.toString();
 		}
+		
 	},
 	
 	WINDOWS("Windows"){
+		
 		@Override
 		public String getHomePathAndDataDir(String recurso) {
 			
@@ -36,6 +39,7 @@ public enum HomePath {
 			
 			return homePathDir.toString();
 		}
+		
 	};
 	
 	private String osName;

@@ -1,5 +1,10 @@
 package br.com.ntconsult.arquivo.constants;
 
+/**
+ * {@code RecursoDataDir} fornece valores para
+ * as pastas dentro do diretório padrão da aplicação
+ * @author Fernando Bino Machado
+ */
 public class RecursoDataDir {
 
 	public final static String IN = "in";	

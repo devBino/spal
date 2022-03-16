@@ -2,7 +2,7 @@ package br.com.ntconsult.arquivo.builder;
 
 /**
  * {@code NomeArquivoBuilder} fornece um padrão
- * para criação do nome dos arquivos
+ * para criação dos nomes dos arquivos
  * @author Fernando Bino Machado
  */
 public class NomeArquivoBuilder {
