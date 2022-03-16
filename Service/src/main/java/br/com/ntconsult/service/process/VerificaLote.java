@@ -16,8 +16,7 @@ public class VerificaLote {
 	@Scheduled( fixedDelay = 10000 )
 	public static void processarLotes() {
 		
-		LoteProcessor processo = new LoteProcessor();
-		processo.iniciar();
+		new LoteProcessor().iniciar();
 		
 	}
 	

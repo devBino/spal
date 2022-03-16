@@ -25,8 +25,9 @@ public class ArquivoLoteProcessor implements Runnable {
 		processo = new Thread(this, Processos.PROCESSAMENTO_LOTES);
 	}
 	
-	public void iniciar() {
+	public ArquivoLoteProcessor iniciar() {
 		processo.start();
+		return this;
 	}
 	
 	public Thread getProcesso() {

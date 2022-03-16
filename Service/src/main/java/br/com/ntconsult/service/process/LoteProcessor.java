@@ -1,9 +1,6 @@
 package br.com.ntconsult.service.process;
 
-import java.util.ArrayList;
-
 import br.com.ntconsult.service.constants.Processos;
-import br.com.ntconsult.service.model.LoteModel;
 import br.com.ntconsult.service.model.RelatorioModel;
 import br.com.ntconsult.service.repository.LoteRepository;
 import br.com.ntconsult.service.singleton.ListaLoteModel;
@@ -15,20 +12,31 @@ import br.com.ntconsult.service.singleton.RelatorioLotes;
  */
 public class LoteProcessor implements Runnable {
 
-	private ArrayList<LoteModel> lotes;
 	private Thread processo; 
 	
 	public LoteProcessor() {
 		processo = new Thread(this, Processos.PRINCIPAL);
-		lotes = new ArrayList<LoteModel>();
 	}
 
-	public void iniciar() {
+	public LoteProcessor iniciar() {
 		processo.start();
+		return this;
 	}
 	
 	public Thread getProcesso() {
 		return processo;
+	}
+	
+	public boolean existemLotes() {
+		return !ListaLoteModel.getInstance().getLotes().isEmpty();
+	}
+	
+	public boolean existemDadosRelatorio() {
+		
+		RelatorioLotes relatorioLotes = RelatorioLotes.getInstance();
+		
+		return relatorioLotes.existemDados();
+		
 	}
 	
 	@Override
@@ -36,21 +44,22 @@ public class LoteProcessor implements Runnable {
 		
 		try {
 			
-			ListaLoteModel listaLoteModel = ListaLoteModel.getInstance();
+			LoteRepository.agruparLotes(); 
 			
-			if( !listaLoteModel.getNomes().isEmpty() ) {
+			if( !existemLotes() ) {
 				stop();
 				return;
 			}
 			
-			verificarRegistrosLotes(listaLoteModel);
-			resume();
+			new ArquivoLoteProcessor()
+				.iniciar()
+				.getProcesso()
+				.join();
 			
-			ArquivoLoteProcessor arquivoLoteProcessor = new ArquivoLoteProcessor();
-			arquivoLoteProcessor.iniciar();
-			
-			arquivoLoteProcessor.getProcesso().join();
-			resume();
+			if( !existemDadosRelatorio() ) {
+				stop();
+				return;
+			}
 			
 			gerarRelatorio();
 			stop();
@@ -61,55 +70,19 @@ public class LoteProcessor implements Runnable {
 		
 	}
 	
-	public synchronized void verificarRegistrosLotes(ListaLoteModel listaLoteModel) {
-		
-		try {
-			
-			LoteRepository.agruparLotes(listaLoteModel); 
-			
-			if( listaLoteModel.getNomes().isEmpty() ) {
-				notify();
-				return;
-			}
-			
-			notify();
-			
-		}catch(Exception error){
-			error.printStackTrace();
-		}
-		
-	}
-	
 	public synchronized void gerarRelatorio() {
 		
 		RelatorioLotes relatorioLotes = RelatorioLotes.getInstance();
 		
-		if( relatorioLotes.getQuantidadeClientes() > 0
-				&& relatorioLotes.getQuantidadeVendedores() > 0 ) {
+		new RelatorioModel()
+			.setConteudo(relatorioLotes.toString())
+			.salvar();
 		
-			new RelatorioModel()
-				.setConteudo(relatorioLotes.toString())
-				.salvar();
-			
-		}
+		System.out.println( "\nRESULTADO:\n" );
+		System.out.println( relatorioLotes.toString() );
+		System.out.println("\n------------------------------------------------------\n");
 		
-		relatorioLotes.resetParciais();
-		
-	}
-	
-	public synchronized void resume() {
-		
-		ListaLoteModel listaLoteModel = ListaLoteModel.getInstance();
-		
-		if( listaLoteModel.getNomes().isEmpty() ) {
-			
-			System.out.println( "\nRESULTADO:\n" );
-			System.out.println( RelatorioLotes.getInstance().toString() );
-			System.out.println("\n------------------------------------------------------\n");
-			
-			stop();
-			
-		}
+		RelatorioLotes.getInstance().resetParciais();
 		
 	}
 	

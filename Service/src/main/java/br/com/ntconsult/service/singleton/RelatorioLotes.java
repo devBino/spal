@@ -15,6 +15,7 @@ public class RelatorioLotes {
 	
 	private RelatorioLotes() {
 		menorValorVenda = 9999999999999.99;
+		piorVendedor = "";
 	}
 	
 	public static RelatorioLotes getInstance() {
@@ -76,12 +77,14 @@ public class RelatorioLotes {
 	}
 
 	public void resetParciais() {
+		
 		quantidadeClientes = 0;
 		quantidadeVendedores = 0;
 		idVendaMaisCara = 0;
 		maiorValorVenda = 0.00;
 		menorValorVenda = 9999999999999.99;
 		piorVendedor = "";
+		
 	}
 	
 	@Override
@@ -102,6 +105,17 @@ public class RelatorioLotes {
 			.append("\n");
 		
 		return relatorio.toString();
+		
+	}
+	
+	public boolean existemDados() {
+		
+		if( quantidadeClientes == 0 && quantidadeVendedores == 0
+				&& idVendaMaisCara == 0 && piorVendedor.isEmpty() ) {
+			return false;
+		}
+		
+		return true;
 		
 	}
 	

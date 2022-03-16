@@ -9,8 +9,10 @@ import br.com.ntconsult.service.singleton.ListaLoteModel;
 
 public class LoteRepository {
 	
-	public static void agruparLotes(ListaLoteModel listaLoteModel) {
+	public static void agruparLotes() {
 	
+		ListaLoteModel listaLoteModel = ListaLoteModel.getInstance();
+		
 		File[] arquivos = new File(new NomeArquivo().getHomePathAndDataDir()).listFiles();
 		
 		for(File a : arquivos) {
