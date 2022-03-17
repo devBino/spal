@@ -33,8 +33,14 @@ public class ArquivoData {
 	
 	public boolean deletarArquivo() {
 		
-		File file = new File(path);
-		return file.delete();
+		if( arquivoExiste() ) {
+		
+			File file = new File(path);
+			return file.delete();
+			
+		}
+		
+		return false;
 		
 	}
 

@@ -13,4 +13,6 @@ public class Processos {
 	public static final String PROCESSAMENTO_LOTES = "Processamento_Lotes";
 	public static final String ATUALIZACAO_RELATORIO = "Atualizacao_Relatorio";
 	
+	public static final int TEMPO_INTERVALO_JOB = 10000;
+	
 }

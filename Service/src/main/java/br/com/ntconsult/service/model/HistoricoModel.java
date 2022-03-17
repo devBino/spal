@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 
 import br.com.ntconsult.arquivo.constants.RecursoDataDir;
 import br.com.ntconsult.arquivo.repository.HomePath;
+import br.com.ntconsult.service.constants.Formatos;
 import br.com.ntconsult.service.constants.NomesArquivos;
 import br.com.ntconsult.service.constants.StatusProcesso;
 
@@ -84,8 +85,7 @@ public class HistoricoModel extends AbstractModel {
 	@Override
 	public String toString() {
 		
-		String formatoData = "dd-MM-yyyy HH:mm:ss";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatoData);
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Formatos.DATE_TIME);
 		
 		StringBuilder historico = new StringBuilder();
 		

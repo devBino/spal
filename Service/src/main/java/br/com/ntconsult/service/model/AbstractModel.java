@@ -16,8 +16,6 @@ public class AbstractModel {
 	protected HomePath homePath;
 	protected String recursoDataDir;
 	
-	public AbstractModel() {}
-	
 	public AbstractModel(String nomeArquivo) {
 		
 		this.nomeArquivo = nomeArquivo;

@@ -3,7 +3,6 @@ package br.com.ntconsult.service.repository;
 import java.io.File;
 
 import br.com.ntconsult.arquivo.builder.NomeArquivo;
-
 import br.com.ntconsult.service.model.LoteModel;
 import br.com.ntconsult.service.singleton.ListaLoteModel;
 

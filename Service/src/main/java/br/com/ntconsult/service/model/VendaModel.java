@@ -24,7 +24,7 @@ public class VendaModel extends AbstractModel {
 		setRecursoDataDir(RecursoDataDir.DADOS_SEPARADOS);
 		
 		items = new ArrayList<ItemModel>();
-		valorTotalVenda = new BigDecimal("0.00");
+		valorTotalVenda = BigDecimal.ZERO;
 		
 	}
 
@@ -54,13 +54,16 @@ public class VendaModel extends AbstractModel {
 	
 	public VendaModel somarValorTotalVenda() {
 		
-		double total = 0.00;
-		
 		for(ItemModel item : this.items) {
-			total += item.getValorTotalItem().doubleValue();
+			
+			BigDecimal valorTotalItem = new BigDecimal(
+					String.valueOf(item.getValorTotalItem().doubleValue()));
+			
+			this.valorTotalVenda = new BigDecimal(
+					String.valueOf(this.valorTotalVenda.doubleValue()))
+					.add(valorTotalItem);
+			
 		}
-		
-		this.valorTotalVenda = new BigDecimal(String.valueOf(total));
 		
 		return this;
 	}

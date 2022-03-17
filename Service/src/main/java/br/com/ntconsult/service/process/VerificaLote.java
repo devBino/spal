@@ -4,6 +4,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import static br.com.ntconsult.service.constants.Processos.TEMPO_INTERVALO_JOB;
+
 /**
  * {@code VerificaLote} veirica se existem lotes para serem processados,
  * e inicia o processamento
@@ -13,10 +15,18 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 public class VerificaLote {
 
-	@Scheduled( fixedDelay = 10000 )
+	@Scheduled( fixedDelay = TEMPO_INTERVALO_JOB )
 	public static void processarLotes() {
 		
-		new LoteProcessor().iniciar();
+		try {
+			
+			new LoteProcessor().iniciar();
+			
+		}catch(Exception error) {
+			
+			System.out.println( error.getMessage() );
+			
+		}
 		
 	}
 	
