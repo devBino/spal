@@ -10,10 +10,12 @@ public class ListaLoteModel {
 	private static ListaLoteModel listaLoteModel;
 	private Set<LoteModel> lotes;
 	private Set<String> nomes;
+	private boolean bloqueada;
 	
 	private ListaLoteModel() {
 		lotes = new HashSet<LoteModel>();
 		nomes = new HashSet<String>();
+		bloqueada = false;
 	}
 	
 	public static ListaLoteModel getInstance() {
@@ -40,6 +42,14 @@ public class ListaLoteModel {
 
 	public void setNomes(Set<String> nomes) {
 		this.nomes = nomes;
+	}
+
+	public boolean isBloqueada() {
+		return bloqueada;
+	}
+
+	public void setBloqueada(boolean bloqueada) {
+		this.bloqueada = bloqueada;
 	}
 	
 	

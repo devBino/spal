@@ -27,26 +27,21 @@ public class LoteProcessor implements Runnable {
 		return processo;
 	}
 	
-	public boolean existemLotes() {
-		return !ListaLoteModel.getInstance().getLotes().isEmpty();
-	}
-	
-	public boolean existemDadosRelatorio() {
-		
-		RelatorioLotes relatorioLotes = RelatorioLotes.getInstance();
-		
-		return relatorioLotes.existemDados();
-		
-	}
-	
 	@Override
 	public void run() {
 		
 		try {
 			
+			if( verificaListaLoteModelBloqueada() ) {
+				return;
+			}
+			
+			bloquearListaLoteModel();
+			
 			LoteRepository.agruparLotes(); 
 			
 			if( !existemLotes() ) {
+				desBloquearListaLoteModel();
 				return;
 			}
 			
@@ -56,18 +51,25 @@ public class LoteProcessor implements Runnable {
 				.join();
 			
 			if( !existemDadosRelatorio() ) {
+				desBloquearListaLoteModel();
 				return;
 			}
 			
 			gerarRelatorio();
 			
+			desBloquearListaLoteModel();
+			
 		}catch(Exception error) {
+			
 			error.printStackTrace();
+			
+			desBloquearListaLoteModel();
+			
 		}
 		
 	}
 	
-	public void gerarRelatorio() {
+	private void gerarRelatorio() {
 		
 		RelatorioLotes relatorioLotes = RelatorioLotes.getInstance();
 		
@@ -80,6 +82,30 @@ public class LoteProcessor implements Runnable {
 		System.out.println("\n------------------------------------------------------\n");
 		
 		RelatorioLotes.getInstance().resetParciais();
+		
+	}
+	
+	private boolean verificaListaLoteModelBloqueada() {
+		return ListaLoteModel.getInstance().isBloqueada();
+	}
+	
+	private void desBloquearListaLoteModel() {
+		ListaLoteModel.getInstance().setBloqueada(false);
+	}
+	
+	private void bloquearListaLoteModel() {
+		ListaLoteModel.getInstance().setBloqueada(true);
+	}
+	
+	private boolean existemLotes() {
+		return !ListaLoteModel.getInstance().getLotes().isEmpty();
+	}
+	
+	private boolean existemDadosRelatorio() {
+		
+		RelatorioLotes relatorioLotes = RelatorioLotes.getInstance();
+		
+		return relatorioLotes.existemDados();
 		
 	}
 	

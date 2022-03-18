@@ -62,7 +62,7 @@ public class ArquivoLoteProcessor implements Runnable {
 		
 	}
 	
-	public void processarLayout(ArquivoData file) {
+	private void processarLayout(ArquivoData file) {
 		
 		try {
 			
