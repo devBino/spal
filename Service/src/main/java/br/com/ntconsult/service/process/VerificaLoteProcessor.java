@@ -13,7 +13,7 @@ import static br.com.ntconsult.service.constants.Processos.TEMPO_INTERVALO_JOB;
  */
 @Component
 @EnableScheduling
-public class VerificaLote {
+public class VerificaLoteProcessor {
 
 	@Scheduled( fixedDelay = TEMPO_INTERVALO_JOB )
 	public static void processarLotes() {
