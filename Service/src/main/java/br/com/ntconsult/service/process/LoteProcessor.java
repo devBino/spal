@@ -47,7 +47,6 @@ public class LoteProcessor implements Runnable {
 			LoteRepository.agruparLotes(); 
 			
 			if( !existemLotes() ) {
-				stop();
 				return;
 			}
 			
@@ -57,12 +56,10 @@ public class LoteProcessor implements Runnable {
 				.join();
 			
 			if( !existemDadosRelatorio() ) {
-				stop();
 				return;
 			}
 			
 			gerarRelatorio();
-			stop();
 			
 		}catch(Exception error) {
 			error.printStackTrace();
@@ -70,7 +67,7 @@ public class LoteProcessor implements Runnable {
 		
 	}
 	
-	public synchronized void gerarRelatorio() {
+	public void gerarRelatorio() {
 		
 		RelatorioLotes relatorioLotes = RelatorioLotes.getInstance();
 		
@@ -84,11 +81,6 @@ public class LoteProcessor implements Runnable {
 		
 		RelatorioLotes.getInstance().resetParciais();
 		
-	}
-	
-	public synchronized void stop() {
-		notify();
-		return;
 	}
 	
 	

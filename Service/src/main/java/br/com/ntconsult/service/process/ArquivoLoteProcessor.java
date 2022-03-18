@@ -56,15 +56,13 @@ public class ArquivoLoteProcessor implements Runnable {
 			ListaLoteModel.getInstance().getLotes().clear();
 			ListaLoteModel.getInstance().getNomes().clear();
 			
-			resume();
-			
 		}catch(Exception error) {
 			error.printStackTrace();
 		}
 		
 	}
 	
-	public synchronized void processarLayout(ArquivoData file) {
+	public void processarLayout(ArquivoData file) {
 		
 		try {
 			
@@ -86,13 +84,9 @@ public class ArquivoLoteProcessor implements Runnable {
 			}
 			
 		}catch(Exception error) {
-			System.out.println(error.getMessage());
+			error.printStackTrace();
 		}
 		
-	}
-	
-	public synchronized void resume() {
-		notify();
 	}
 	
 	
