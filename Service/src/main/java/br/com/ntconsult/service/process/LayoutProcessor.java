@@ -5,10 +5,14 @@ import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 
 import br.com.ntconsult.service.annotations.LayoutMethod;
+
 import br.com.ntconsult.service.constants.DelimitadoresTexto;
+import br.com.ntconsult.service.constants.Layouts;
+
 import br.com.ntconsult.service.model.ClienteModel;
 import br.com.ntconsult.service.model.VendaModel;
 import br.com.ntconsult.service.model.VendedorModel;
+
 import br.com.ntconsult.service.singleton.RelatorioLotes;
 
 /**
@@ -25,7 +29,7 @@ public class LayoutProcessor {
 		relatoriosLotes = RelatorioLotes.getInstance();
 	}
 	
-	@LayoutMethod( tipo = "001" )
+	@LayoutMethod( tipo = Layouts.VENDEDOR )
 	public void processaLayoutVendedor(String dados) {
 		
 		//seta dados na model e salva em arquivo do vendedor
@@ -45,7 +49,7 @@ public class LayoutProcessor {
 		
 	}
 	
-	@LayoutMethod( tipo = "002" )
+	@LayoutMethod( tipo = Layouts.CLIENTE )
 	public void processaLayoutCliente(String dados) {
 		
 		//seta dados na model e salva em arquivo do cliente
@@ -65,7 +69,7 @@ public class LayoutProcessor {
 		
 	}
 	
-	@LayoutMethod( tipo = "003" )
+	@LayoutMethod( tipo = Layouts.VENDA )
 	public void processaLayoutVenda(String dados) {
 		
 		//seta dados na model e salva em arquivo de venda
