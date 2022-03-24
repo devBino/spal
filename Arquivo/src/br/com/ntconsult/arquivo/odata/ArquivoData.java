@@ -104,7 +104,7 @@ public class ArquivoData {
 		
 		String[] linhas = contents.toString().split("\n");
 
-		ArrayList<String[]> registros = new ArrayList<String[]>(); 
+		ArrayList<String[]> registros = new ArrayList<>();
 		
 		if( linhas.length == 1 && linhas[0].isEmpty() ) {
 			return registros; 

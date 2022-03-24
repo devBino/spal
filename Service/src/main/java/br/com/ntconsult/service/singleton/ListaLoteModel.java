@@ -13,8 +13,8 @@ public class ListaLoteModel {
 	private boolean bloqueada;
 	
 	private ListaLoteModel() {
-		lotes = new HashSet<LoteModel>();
-		nomes = new HashSet<String>();
+		lotes = new HashSet<>();
+		nomes = new HashSet<>();
 		bloqueada = false;
 	}
 	

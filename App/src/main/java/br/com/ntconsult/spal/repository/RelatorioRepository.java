@@ -25,7 +25,7 @@ public class RelatorioRepository {
 				.getHomePathAndDataDir(RecursoDataDir.OUT)
 				.concat(RELATORIO);
 		
-		ArrayList<String[]> registros = new ArrayList<String[]>();
+		ArrayList<String[]> registros = new ArrayList<>();
 		
 		ArquivoData arquivo = new ArquivoData(caminhoArquivo);
 		arquivo.ler();

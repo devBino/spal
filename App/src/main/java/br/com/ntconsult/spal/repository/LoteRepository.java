@@ -26,7 +26,7 @@ public class LoteRepository {
 	
 	public ArrayList<String[]> getArquivosLotes() {
 	
-		ArrayList<String[]> arquivosLotes = new ArrayList<String[]>();
+		ArrayList<String[]> arquivosLotes = new ArrayList<>();
 		
 		for( File a : new File(new NomeArquivo().getHomePathAndDataDir()).listFiles() ) {
 			arquivosLotes.add(new String[] {

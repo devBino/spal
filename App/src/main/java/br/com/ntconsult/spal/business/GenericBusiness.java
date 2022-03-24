@@ -16,7 +16,7 @@ public abstract class GenericBusiness {
 	private ArrayList<String> mensagens;
 	
 	public GenericBusiness() {
-		mensagens = new ArrayList<String>();
+		mensagens = new ArrayList<>();
 	}
 	
 	public void addMensagem(String mensagem) {

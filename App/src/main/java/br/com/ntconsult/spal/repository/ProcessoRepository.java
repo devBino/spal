@@ -21,7 +21,7 @@ public class ProcessoRepository {
 	
 	public ArrayList<String> getNomesLotes(){
 		
-		ArrayList<String> nomesLotes = new ArrayList<String>();
+		ArrayList<String> nomesLotes = new ArrayList<>();
 		
 		for(String[] arquivo : loteRepository.getArquivosLotes()) {
 			

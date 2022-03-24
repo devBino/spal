@@ -23,7 +23,7 @@ public class VendaModel extends AbstractModel {
 		super(NomesArquivos.VENDAS);
 		setRecursoDataDir(RecursoDataDir.DADOS_SEPARADOS);
 		
-		items = new ArrayList<ItemModel>();
+		items = new ArrayList<>();
 		valorTotalVenda = BigDecimal.ZERO;
 		
 	}

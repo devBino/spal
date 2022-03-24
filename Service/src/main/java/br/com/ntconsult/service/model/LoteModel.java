@@ -18,7 +18,7 @@ public class LoteModel {
 	
 	public LoteModel(String descricaoLote) {
 		this.descricaoLote = descricaoLote;
-		this.arquivos = new ArrayList<ArquivoModel>();
+		this.arquivos = new ArrayList<>();
 	}
 	
 	public LoteModel(File file) {
@@ -28,7 +28,7 @@ public class LoteModel {
 				.builder()
 				.getDescricaoLote();
 		
-		this.arquivos = new ArrayList<ArquivoModel>();
+		this.arquivos = new ArrayList<>();
 		
 	}
 
