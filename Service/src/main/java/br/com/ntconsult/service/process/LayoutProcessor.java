@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import br.com.ntconsult.service.annotations.LayoutMethod;
 
 import br.com.ntconsult.service.constants.DelimitadoresTexto;
+import br.com.ntconsult.service.constants.Formatos;
 import br.com.ntconsult.service.constants.Layouts;
 
 import br.com.ntconsult.service.model.ClienteModel;
@@ -14,6 +15,7 @@ import br.com.ntconsult.service.model.VendaModel;
 import br.com.ntconsult.service.model.VendedorModel;
 
 import br.com.ntconsult.service.singleton.RelatorioLotes;
+import br.com.ntconsult.service.util.RegexUtil;
 
 /**
  * {@code LayoutProcessor} processa registro de
@@ -80,10 +82,8 @@ public class LayoutProcessor {
 			.setNomeVendedor(dadosModel[3]);
 		
 		//salva itens da venda
-		int indexInicio = dados.indexOf('[');
-		int indexFinal = dados.indexOf(']');
-		
-		String dadosItem = dados.substring(indexInicio+1, indexFinal); 
+		String dadosItem = RegexUtil.extrairTexto(dados, Formatos.REGEX_ITENS_VENDA)
+				.replaceAll("[\\[\\]]", "");
 		
 		for(String item : dadosItem.split(DelimitadoresTexto.VIRGULA)) {
 			vendaModel.addItem(item);

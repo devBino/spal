@@ -3,6 +3,7 @@ package br.com.ntconsult.service.repository;
 import br.com.ntconsult.arquivo.builder.NomeArquivo;
 import br.com.ntconsult.arquivo.constants.RecursoDataDir;
 import br.com.ntconsult.arquivo.odata.ArquivoData;
+import br.com.ntconsult.service.constants.DelimitadoresTexto;
 import br.com.ntconsult.service.constants.NomesArquivos;
 import br.com.ntconsult.service.model.HistoricoModel;
 import br.com.ntconsult.service.model.LoteModel;
@@ -35,7 +36,7 @@ public class HistoricoLoteRepository {
 		
 		boolean existe = false;
 		
-		for(String historico : arquivo.getContents().toString().split("\n")) {
+		for(String historico : arquivo.getContents().toString().split(DelimitadoresTexto.QUEBRA_LINHA)) {
 			
 			if( historico.contains(descricaoLote) ) {
 				existe = true;
