@@ -28,11 +28,16 @@ public class RelatorioRepository {
 		ArrayList<String[]> registros = new ArrayList<>();
 		
 		ArquivoData arquivo = new ArquivoData(caminhoArquivo);
-		arquivo.ler();
 		
-		for( String linha : arquivo.getContents().toString().split("\n") ) {
-			String[] dados = linha.split(":");
-			registros.add(dados);
+		if( arquivo.arquivoExiste() ) {
+			
+			arquivo.ler();
+			
+			for( String linha : arquivo.getContents().toString().split("\n") ) {
+				String[] dados = linha.split(":");
+				registros.add(dados);
+			}
+			
 		}
 		
 		return registros;

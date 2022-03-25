@@ -9,7 +9,7 @@
       <!-- Page Wrapper -->
       <div id="wrapper">
 
-         <div th:replace="fragments/sidebar :: sidebar"></div>
+         <ul th:replace="fragments/sidebar :: sidebar"></ul>
 
          <!-- Content Wrapper -->
          <div id="content-wrapper" class="d-flex flex-column">
@@ -32,8 +32,9 @@
                   <!-- Content Row -->
                   <div class="row">
                      <div class="col-sm-12">
+
                         <!-- Form Register -->
-                        <div class="row">
+                        <div class="row mb-3">
                            <div class="col-lg-12 d-lg-block">
                               <form action="/salvar" method="POST" enctype="multipart/form-data">
                                  <div class="row">
@@ -53,72 +54,81 @@
                               </form>
                            </div>
                         </div>
+
+                        <div class="card shadow alert-warning mb-4 mt-3" th:if="${sucesso == 'false'}">
+                           <div id="dvErros" class="alert alert-warning" >
+                              <div th:each="mensagem : ${mensagens}">
+                                 <p th:text="${mensagem}"></p>
+                                 <br>
+                              </div>
+                           </div>
+                        </div>
+               
+                        <div class="card shadow alert-warning mb-4 mt-3" th:if="${sucesso == 'true'}">
+                           <div id="dvErros" class="alert alert-success" >
+                              
+                              <p>Arquivo(s) salvo(s) com sucesso...</p>
+                              
+                              <script>
+                                 setTimeout(()=>{
+                                    window.location.href='/lotes';
+                                 },3000)
+                              </script>
+                              
+                           </div>
+                        </div>
+               
+                        <div class="row">
+                           
+                           <div class="col-sm-12">
+
+                              <div class="card shadow mb-4 mt-3">
+                              
+                                 <div class="card-header py-3">
+                                    <div class="row">
+                                       <div class="col-sm-11">
+                                             <h6 class="m-0 font-weight-bold text-primary">Arquivos em Lotes</h6>
+                                       </div>
+                                       <div class="col-sm-1">
+                           
+                                       </div>
+                                    </div>
+                                 </div>        
+                                             
+                                 <div class="card-body" id="dvTabela">
+                                    <div class="table-responsive">
+                                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                             <thead>
+                                                <tr>
+                                                   <th>NOME</th>
+                                                   <th>CAMINHO</th>
+                                                   <th><center>-</center></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                             
+                                                <tr th:each="arquivos : ${arquivos}" >
+                                                      <td><span th:text="${arquivos[0]}"></span></td>
+                                                      <td><span th:text="${arquivos[1]}"></span></td>
+                                                      <td>
+                                                         <span class="btn btn-danger btn-sm btn-deletar" th:attr="data-nome=${arquivos[0]}" onclick="deletar(this);">
+                                                            <i class="fas fa-trash"></i>
+                                                         </span>
+                                                      </td>
+                                                </tr>
+                                                
+                                             </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+                        </div>
+
                      </div>
                   </div>
 
-                  <div class="card shadow alert-warning mb-4 mt-3" th:if="${sucesso == 'false'}">
-                    <div id="dvErros" class="alert alert-warning" >
-                       <div th:each="mensagem : ${mensagens}">
-                          <p th:text="${mensagem}"></p>
-                          <br>
-                       </div>
-                    </div>
-                  </div>
-               
-                  <div class="card shadow alert-warning mb-4 mt-3" th:if="${sucesso == 'true'}">
-                    <div id="dvErros" class="alert alert-success" >
-                       
-                       <p>Arquivo(s) salvo(s) com sucesso...</p>
-                       
-                       <script>
-                          setTimeout(()=>{
-                             window.location.href='/lotes';
-                          },3000)
-                       </script>
-                       
-                    </div>
-                  </div>
-               
-                  <div class="card shadow mb-4 mt-3">
-                  
-                     <div class="card-header py-3">
-                        <div class="row">
-                           <div class="col-sm-11">
-                                 <h6 class="m-0 font-weight-bold text-primary">Arquivos em Lotes</h6>
-                           </div>
-                           <div class="col-sm-1">
-               
-                           </div>
-                        </div>
-                     </div>        
-                                 
-                     <div class="card-body" id="dvTabela">
-                        <div class="table-responsive">
-                           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                 <thead>
-                                    <tr>
-                                       <th>NOME</th>
-                                       <th>CAMINHO</th>
-                                       <th><center>-</center></th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                 
-                                    <tr th:each="arquivos : ${arquivos}" >
-                                          <td><span th:text="${arquivos[0]}"></span></td>
-                                          <td><span th:text="${arquivos[1]}"></span></td>
-                                          <td>
-                                             <span class="btn btn-danger btn-sm btn-deletar" th:attr="data-nome=${arquivos[0]}" onclick="deletar(this);">
-                                                <i class="fas fa-trash"></i>
-                                             </span>
-                                          </td>
-                                    </tr>
-                                    
-                                 </tbody>
-                           </table>
-                        </div>
-                     </div>
-                  </div>
                </div>
                <!-- End of Main Content -->
 
@@ -129,6 +139,11 @@
 
          </div>
          <!-- End of Page Wrapper -->
+
+         <!-- Scroll to Top Button-->
+         <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+         </a>
 
          <div th:replace="fragments/jsbody :: jsbody"></div>
 

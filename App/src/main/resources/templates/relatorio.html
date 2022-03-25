@@ -9,7 +9,7 @@
       <!-- Page Wrapper -->
       <div id="wrapper">
 
-         <div th:replace="fragments/sidebar :: sidebar"></div>
+         <ul th:replace="fragments/sidebar :: sidebar"></ul>
 
          <!-- Content Wrapper -->
          <div id="content-wrapper" class="d-flex flex-column">
@@ -48,26 +48,33 @@
                         </div>
                      </div>        
                                  
-                     <div class="card-body" id="dvTabela">
-                        <div class="table-responsive">
-                           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                 <thead>
-                                    <tr>
-                                       <th>AVALIAÇÃO</th>
-                                       <th>RESULTADO</th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                 
-                                    <tr th:each="relatorios : ${relatorios}" >
-                                          <td><span th:text="${relatorios[0]}"></span></td>
-                                          <td><span th:text="${relatorios[1]}"></span></td>
-                                    </tr>
-                                    
-                                 </tbody>
-                           </table>
+                     <div class="row">
+                        <div class="col-sm-12">
+                        
+                           <div class="card-body" id="dvTabela">
+                              <div class="table-responsive">
+                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                       <thead>
+                                          <tr>
+                                             <th>AVALIAÇÃO</th>
+                                             <th>RESULTADO</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                       
+                                          <tr th:each="relatorios : ${relatorios}" >
+                                                <td><span th:text="${relatorios[0]}"></span></td>
+                                                <td><span th:text="${relatorios[1]}"></span></td>
+                                          </tr>
+                                          
+                                       </tbody>
+                                 </table>
+                              </div>
+                           </div>
+
                         </div>
                      </div>
+                     
                   </div>
                </div>
                <!-- End of Main Content -->
@@ -79,6 +86,11 @@
 
          </div>
          <!-- End of Page Wrapper -->
+
+         <!-- Scroll to Top Button-->
+         <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+         </a>
 
          <div th:replace="fragments/jsbody :: jsbody"></div>
 
