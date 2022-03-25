@@ -28,10 +28,12 @@ public class LoteRepository {
 	
 		ArrayList<String[]> arquivosLotes = new ArrayList<>();
 		
-		for( File a : new File(new NomeArquivo().getHomePathAndDataDir()).listFiles() ) {
+		File[] files = new File(new NomeArquivo().getHomePathAndDataDir()).listFiles();
+		
+		for( File f : files ) {
 			arquivosLotes.add(new String[] {
-				a.getName(),
-				a.getAbsolutePath()
+				f.getName(),
+				f.getAbsolutePath()
 			});
 		}
 		
@@ -48,11 +50,13 @@ public class LoteRepository {
 	
 	public void deletarArquivoLote(ArquivoRequest arquivo) {
 
-		for( File a : new File(new NomeArquivo().getHomePathAndDataDir()).listFiles() ) {
+		File[] files = new File(new NomeArquivo().getHomePathAndDataDir()).listFiles();
+		
+		for( File f : files ) {
 			
-			if( a.getName().equals(arquivo.getNomeArquivo()) ) {
+			if( f.getName().equals(arquivo.getNomeArquivo()) ) {
 				arquivo.setSucesso(true);
-				a.delete();
+				f.delete();
 				break;
 			}
 			
