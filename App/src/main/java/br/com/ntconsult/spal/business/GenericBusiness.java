@@ -27,6 +27,18 @@ public abstract class GenericBusiness {
 		return mensagens;
 	}
 	
+	public String getConteudoMensagens() {
+		
+		StringBuilder contenudo = new StringBuilder();
+		
+		this.mensagens.forEach(mensagem -> {
+			contenudo.append(mensagem);
+		});
+		
+		return contenudo.toString();
+		
+	}
+	
 	public boolean existemErros() {
 		return !mensagens.isEmpty();
 	}

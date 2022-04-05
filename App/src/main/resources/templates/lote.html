@@ -4,7 +4,7 @@
 
    <head th:replace="fragments/head :: head"></head>
 
-   <body id="page-top">
+   <body id="page-top" onload="gerarProximoNomeLote();">
 
       <!-- Page Wrapper -->
       <div id="wrapper">
@@ -40,11 +40,11 @@
                                  <div class="row">
                                     <div class="col-sm-4">
                                        <label>Descrição Lote</label>
-                                       <input type="text" class="form-control form-control-sm" id="descricao" name="descricao" placeholder="Formato = Lote_1" required autofocus="on">
+                                       <input type="text" class="form-control form-control-sm" id="descricao" name="descricao" placeholder="Formato = Lote_1" required readonly="true">
                                     </div>
                                     <div class="col-sm-6">
                                        <label>Arquivos</label>
-                                       <input type="file" class="form-control form-control-sm" id="file" name="file" required>
+                                       <input type="file" class="form-control form-control-sm" id="file" name="file" required autofocus="on">
                                     </div>
                                     <div class="col-sm-2">
                                        <button class="btn btn-success btn-sm btn-sm mt-4 pt2 pb-3">Salvar</button>
@@ -108,7 +108,7 @@
                                              <tbody>
                                              
                                                 <tr th:each="arquivos : ${arquivos}" >
-                                                      <td><span th:text="${arquivos[0]}"></span></td>
+                                                      <td class="td-nome-lote"><span th:text="${arquivos[0]}"></span></td>
                                                       <td><span th:text="${arquivos[1]}"></span></td>
                                                       <td>
                                                          <span class="btn btn-danger btn-sm btn-deletar" th:attr="data-nome=${arquivos[0]}" onclick="deletar(this);">

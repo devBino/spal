@@ -69,6 +69,14 @@ public class Lote {
 	@PostMapping( path = "/lotes" )
 	public ResponseEntity<ArquivoRequest> deletar(@RequestBody ArquivoRequest arquivo) {
 		
+		business.resetarMensagens();
+		business.verificaHistoricoLote(arquivo);
+		
+		if( business.existemErros() ) {
+			arquivo.setMensagem( business.getConteudoMensagens() );
+			return new ResponseEntity<ArquivoRequest>(arquivo, HttpStatus.FORBIDDEN);
+		}
+		
 		loteRepository.deletarArquivoLote(arquivo);
 		
 		return new ResponseEntity<ArquivoRequest>(arquivo, HttpStatus.OK); 

@@ -1,7 +1,11 @@
 package br.com.ntconsult.spal.business;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import br.com.ntconsult.spal.repository.HistoricoRepository;
+import br.com.ntconsult.spal.request.ArquivoRequest;
 
 /**
  * {@code LoteBusiness} faz validações de regras negociais
@@ -11,6 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Service
 public class LoteBusiness extends GenericBusiness {
+	
+	@Autowired
+	HistoricoRepository historicoRepository;
 	
 	public LoteBusiness() {
 		super();
@@ -41,6 +48,19 @@ public class LoteBusiness extends GenericBusiness {
 				.append("siga o formato: Lote{1}_{1}[0-9]{1,6} ")
 				.append("Exemplo: Lote_999999")
 				.toString());
+			
+		}
+		
+	}
+	
+	public void verificaHistoricoLote(ArquivoRequest arquivo) {
+		
+		if( historicoRepository.existeHistoricoLote( arquivo.getNomeArquivo() ) ) {
+			
+			addMensagem(new StringBuilder()
+					.append("Não é possível deletar o lote, ")
+					.append("pois existem históricos para o lote selecionado...")
+					.toString());
 			
 		}
 		
