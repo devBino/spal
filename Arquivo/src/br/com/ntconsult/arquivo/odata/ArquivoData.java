@@ -18,10 +18,22 @@ public class ArquivoData {
 
 	private String path;
 	private StringBuilder contents;
+	private String delimitadorLinhas;
+	private String delimitadorDadosLinhas;
 	
 	public ArquivoData(String paramPath) {
 		path = paramPath;
 		contents = new StringBuilder();
+		delimitadorLinhas = "\n";
+		delimitadorDadosLinhas = "ç";
+	}
+	
+	public ArquivoData(String paramPath, String paramDelimitadorLinhas, 
+			String paramDelimitadorDadosLinhas) {
+		path = paramPath;
+		contents = new StringBuilder();
+		delimitadorLinhas = paramDelimitadorLinhas;
+		delimitadorDadosLinhas = paramDelimitadorDadosLinhas;
 	}
 	
 	public boolean arquivoExiste() {
@@ -102,7 +114,7 @@ public class ArquivoData {
 		
 		ler();
 		
-		String[] linhas = contents.toString().split("\n");
+		String[] linhas = contents.toString().split(delimitadorLinhas);
 
 		ArrayList<String[]> registros = new ArrayList<>();
 		
@@ -111,7 +123,7 @@ public class ArquivoData {
 		}
 		
 		for( int i=0; i<linhas.length; i++ ) {
-			String[] arrLinha = linhas[i].split("ç");
+			String[] arrLinha = linhas[i].split(delimitadorDadosLinhas);
 			registros.add(arrLinha);
 		}
 		

@@ -11,7 +11,7 @@ async function deletar(elem){
             alert('Arquivo de lote deletado com sucesso...');
             window.location.href = '';
         }else{
-            alert(`Não foi possível deletar o arquivo, motivo:\n${resposta.mensagem}`);
+            alert(`Não foi possível deletar o arquivo, motivo:\n\n${resposta.mensagem}`);
         }
 
     }else{
